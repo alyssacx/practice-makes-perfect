@@ -27,7 +27,9 @@ public boolean searchMatrix(int[][] matrix, int target) {
             top = mid+1;
         }
     }
-    int row = bottom < 0 ? 0 : bottom;
+    if(bottom < 0)
+      return false;
+    int row = bottom;
     int left = 0;
     int right = matrix[0].length-1;
     while(left <= right) {
