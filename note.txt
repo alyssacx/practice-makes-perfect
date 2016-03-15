@@ -1,2 +1,4 @@
 Group Anagram: understand charArr.toString() vs new String(charArr)
 Longest Increasing Sequences: nlogn algorithm
+
+Partition List: do it again with no extra space
