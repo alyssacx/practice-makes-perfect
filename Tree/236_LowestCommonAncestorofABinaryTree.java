@@ -14,68 +14,84 @@ For example, the lowest common ancestor (LCA) of nodes 5 and 1 is 3. Another exa
 */
 public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
-        if(root == null)
-            return null;
+    if(root == null)
+        return null;
 
-        if(root == p || root == q)
-            return root;
+    if(root == p || root == q)
+        return root;
 
-        if(root.left == p) {
-            boolean leftHas = findAncestor(root.left, q);
-            boolean rightHas = findAncestor(root.right, q);
-            if(leftHas) {
-                return p;
-            } else {
-                return root;
-            }
-        }
-
-        if(root.right == p) {
-            boolean leftHas = findAncestor(root.left, q);
-            boolean rightHas = findAncestor(root.right, q);
-            if(rightHas) {
-                return p;
-            } else {
-                return root;
-            }
-        }
-
-        if(root.left == q) {
-            boolean leftHas = findAncestor(root.left, p);
-            boolean rightHas = findAncestor(root.right, p);
-            if(leftHas) {
-                return q;
-            } else {
-                return root;
-            }
-        }
-
-        if(root.right == q) {
-            boolean leftHas = findAncestor(root.left, p);
-            boolean rightHas = findAncestor(root.right, p);
-            if(rightHas) {
-                return q;
-            } else {
-                return root;
-            }
-        }
-
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if(left != null && right != null) {
+    if(root.left == p) {
+        boolean leftHas = findAncestor(root.left, q);
+        boolean rightHas = findAncestor(root.right, q);
+        if(leftHas) {
+            return p;
+        } else {
             return root;
         }
-        return left == null ? right: left;
-
     }
 
-    private boolean findAncestor(TreeNode root, TreeNode node) {
-
-        if(root == null)
-            return false;
-
-        if(root.left == node || root.right == node)
-            return true;
-
-        return findAncestor(root.left, node) || findAncestor(root.right, node);
+    if(root.right == p) {
+        boolean leftHas = findAncestor(root.left, q);
+        boolean rightHas = findAncestor(root.right, q);
+        if(rightHas) {
+            return p;
+        } else {
+            return root;
+        }
     }
+
+    if(root.left == q) {
+        boolean leftHas = findAncestor(root.left, p);
+        boolean rightHas = findAncestor(root.right, p);
+        if(leftHas) {
+            return q;
+        } else {
+            return root;
+        }
+    }
+
+    if(root.right == q) {
+        boolean leftHas = findAncestor(root.left, p);
+        boolean rightHas = findAncestor(root.right, p);
+        if(rightHas) {
+            return q;
+        } else {
+            return root;
+        }
+    }
+
+    TreeNode left = lowestCommonAncestor(root.left, p, q);
+    TreeNode right = lowestCommonAncestor(root.right, p, q);
+    if(left != null && right != null) {
+        return root;
+    }
+    return left == null ? right: left;
+}
+
+private boolean findAncestor(TreeNode root, TreeNode node) {
+
+    if(root == null)
+        return false;
+
+    if(root.left == node || root.right == node)
+        return true;
+
+    return findAncestor(root.left, node) || findAncestor(root.right, node);
+}
+
+/***********************************/
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+    if(root == null)
+        return null;
+
+    if(root == p || root == q)
+        return root;
+
+    TreeNode left = lowestCommonAncestor(root.left, p, q);
+    TreeNode right = lowestCommonAncestor(root.right, p, q);
+    if(left != null && right != null) {
+        return root;
+    }
+    return left == null ? right: left;
+}
