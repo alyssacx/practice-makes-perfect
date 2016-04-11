@@ -3,3 +3,5 @@ Longest Increasing Sequences: nlogn algorithm
 Unique Binary Search Tree II
 
 Partition List: do it again with no extra space
+
+Perfect Squares: DP 解法
